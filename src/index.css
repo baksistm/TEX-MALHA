@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@theme {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --color-santarosa-accent: #4f46e5;      /* Indigo matching the design's Santa Rosa color */
+  --color-santarosa-accent-dark: #3730a3;
+  --color-texmalha-accent: #1e293b;        /* Dark Slate matching the design's TexMalha color */
+  --color-texmalha-accent-dark: #0f172a;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #F1F5F9;
+  color: #0f172a;
+}
+
+.grid-bg {
+  background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.card-shadow {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #CBD5E1, transparent);
+}
