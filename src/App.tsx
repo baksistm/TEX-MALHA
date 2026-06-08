@@ -569,7 +569,7 @@ export default function App() {
                     ) : (
                       <Printer size={14} />
                     )}
-                    <span>{isCsvLoading ? "Carregando Dados..." : "Imprimir Linhas 1-99"}</span>
+                    <span>{isCsvLoading ? "Carregando Dados..." : "IMPRIMIR RELATÓRIO"}</span>
                   </button>
                 </div>
 
