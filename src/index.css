@@ -41,23 +41,42 @@ body {
     margin: 8mm 10mm 8mm 10mm;
   }
 
-  body {
+  body, html {
     background-color: #ffffff !important;
     background-image: none !important;
     color: #000000 !important;
     font-size: 10px !important;
     font-family: 'Inter', -apple-system, sans-serif !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  /* Hide entire screen-only elements */
-  body > div:not(#print-area),
+  /* Ensure the React root wrapper and main layout divs stay visible and do not flex/wrap */
   #root,
+  #root > div,
+  div[class*="min-h-screen"] {
+    display: block !important;
+    background: none !important;
+    background-color: #ffffff !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: unset !important;
+    width: 100% !important;
+    position: relative !important;
+  }
+
+  /* Hide all screen-only elements */
   header,
+  main,
   footer,
   aside,
   button,
   a,
-  .no-print {
+  .no-print,
+  #btn-print-texmalha-range,
+  div[class*="h-14 border-t"],
+  iframe {
     display: none !important;
     height: 0 !important;
     margin: 0 !important;
@@ -70,11 +89,13 @@ body {
   #print-area {
     display: block !important;
     visibility: visible !important;
-    position: absolute !important;
-    left: 0 !important;
-    top: 0 !important;
     width: 100% !important;
-    background: white !important;
+    max-width: 100% !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    position: static !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 
   /* High contrast table styling printed properly across pages */
@@ -82,6 +103,7 @@ body {
     border-collapse: collapse !important;
     width: 100% !important;
     page-break-inside: auto !important;
+    margin-top: 10px !important;
   }
 
   tr {
@@ -98,28 +120,30 @@ body {
   }
 
   th {
-    background-color: #0f172a !important;
+    background-color: #1e293b !important;
     color: #ffffff !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     font-weight: 700 !important;
     border: 1px solid #475569 !important;
     text-transform: uppercase !important;
-    font-size: 9px !important;
-    padding: 6px 4px !important;
+    font-size: 8px !important;
+    padding: 5px 3px !important;
+    text-align: center !important;
   }
 
   td {
-    border: 1px solid #cbd5e1 !important;
-    padding: 6px 4px !important;
-    font-size: 9px !important;
+    border: 1px solid #94a3b8 !important;
+    padding: 4px 3px !important;
+    font-size: 8px !important;
     color: #000000 !important;
+    background-color: transparent !important;
     word-break: break-all !important;
   }
 
   /* Alternating Zebra lines for quick industrial scanning */
   tr:nth-child(even) td {
-    background-color: #f8fafc !important;
+    background-color: #f1f5f9 !important;
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }

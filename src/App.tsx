@@ -109,7 +109,7 @@ export default function App() {
   }, [loggedCompany]);
 
   // Load the production data for printing (Lines 1-99)
-  const fetchCsvData = () => {
+  const fetchCsvData = (autoPrint = false) => {
     setIsCsvLoading(true);
     setCsvError("");
     fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTvRoGuxS_7-fV0gipL1S4n3TLgWkxpKmsDPVLcr7cKORSDy8mV8aXRhlXK5KONXxcEoj-hXPV1hlgu/pub?gid=1310694800&single=true&output=csv")
@@ -122,6 +122,11 @@ export default function App() {
         // Save first 99 parsed rows (Title lines + Data rows)
         setSheetRows(parsed.slice(0, 99));
         setIsCsvLoading(false);
+        if (autoPrint) {
+          setTimeout(() => {
+            window.print();
+          }, 150);
+        }
       })
       .catch((err) => {
         console.error("Erro ao carregar dados para impressão:", err);
@@ -555,7 +560,7 @@ export default function App() {
                     id="btn-print-texmalha-range"
                     onClick={() => {
                       if (sheetRows.length === 0) {
-                        fetchCsvData();
+                        fetchCsvData(true);
                       } else {
                         window.print();
                       }
